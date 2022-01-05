@@ -1,0 +1,16 @@
+{
+  "name": "{{name}}",
+  "description": "{{description}}",
+  "rest-apis": {
+    {{#rest-api-calls}}
+    "name": "{{name}}",
+    "description": "{{description}}",
+    "url": "{{url}}",
+    "method": "{{method}}",
+    "authentication": {
+      "type": "{{authenticationType}}",
+      "value": "{{authenticationValue}}"
+    }
+    {{/rest-api-calls}}
+  }
+}

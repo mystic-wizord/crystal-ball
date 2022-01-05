@@ -1,4 +1,6 @@
+from os import close
 import click
+import chevron
 # from commands import cb_init
 # from utils import string_utils
 
@@ -27,9 +29,17 @@ def init(name: str = None, format: str = "yaml"):
         click.echo(f"Initializing {name}!")
 
     if format == "yaml":
-        click.echo('YAML')
+        with open('./mustache/project-definition-yaml.mustache') as yaml:
+            yaml_str = yaml.readlines()
+            project_def_yaml = chevron.render(yaml_str, { 'name': 'test' })
+            click.echo(project_def_yaml)
+            close()
     elif format == "json":
-        click.echo('JSON')
+        with open('./mustache/project-definition-json.mustache') as json:
+            json_str = json.readlines()
+            project_def_json = chevron.render(json_str, { 'name': 'test' })
+            click.echo(project_def_json)
+            close()
     else:
         click.echo('POOP')
     
